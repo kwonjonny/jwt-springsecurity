@@ -57,6 +57,11 @@ public class MemberDTO extends User implements OAuth2User {
         return map;
     }
 
+    // kakao Login props 
+    public void setProps(Map<String,Object> map) {
+
+    }
+
     //Oauth2 연결할 때
     @Override
     public Map<String, Object> getAttributes() {

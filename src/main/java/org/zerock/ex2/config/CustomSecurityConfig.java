@@ -18,6 +18,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.zerock.ex2.security.filter.JWTCheckFilter;
 import org.zerock.ex2.security.handler.APILoginSuccessHandler;
 import org.zerock.ex2.security.handler.CustomAccessDeniedHandler;
+import org.zerock.ex2.security.handler.OAuthAPILoginSuccessHandler;
 
 import java.util.Arrays;
 
@@ -49,6 +50,17 @@ public class CustomSecurityConfig {
 
             // POSTMAN 시 빈화면 => 사용자 정보들을 다 가지고온다.
             config.successHandler(new APILoginSuccessHandler());
+        });
+
+        // kakao login
+        http.oauth2Client(config -> {
+
+        });
+
+        // Oatuh2 Login
+        http.oauth2Login(config -> {
+            // react login Successs Hnalder 안에서 refresh Token 발급 
+            config.successHandler(new OAuthAPILoginSuccessHandler());
         });
 
         http.exceptionHandling(config -> config.accessDeniedHandler(new CustomAccessDeniedHandler()));

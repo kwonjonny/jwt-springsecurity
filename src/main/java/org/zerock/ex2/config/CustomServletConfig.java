@@ -7,10 +7,10 @@ import org.zerock.ex2.controller.formatter.LocalDateFormatter;
 @Configuration
 public class CustomServletConfig {
     
-    @Override
-    public void addFormatters(FormatterRegistry registry) {
+    // @Override
+    // public void addFormatters(FormatterRegistry registry) {
 
-        registry.addFormatter(new LocalDateFormatter());
-    }
-
+    //     registry.addFormatter(new LocalDateFormatter());
+    // }
+    
 }

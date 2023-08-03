@@ -37,9 +37,24 @@ public class JWTCheckFilter extends OncePerRequestFilter {
         // Login 이면 Filter 검증 안한다
         if (path.equals("/api/member/login")
                 || path.equals("/api/member/refresh")
-                || path.equals("/api/member/")) {
+                || path.startsWith("/api/member/")) {
             return true;
         }
+
+        // http://localhost:8080/login/oauth2/kakao
+        // kakao login true
+        if (path.startsWith("/login")) {
+            return true;
+        }
+
+        if (path.startsWith("/oauth2")) {
+            return true;
+        }
+
+        if (path.startsWith(".ico")) {
+            return true;
+        }
+
         return false;
     }
 
